@@ -8,12 +8,13 @@ let card = document.getElementById("container");
 let currentAudio = null;
 let currentButton = null;
 
+//Fungsi untuk progress bar
 function updateSliderStyle(slider) {
     const value = slider.value;
     slider.style.background = `linear-gradient(to right, white 0%, white ${value}%, #888 ${value}%, #888 100%)`;
 }
 
-// Loop untuk membuat semua kartu sekaligus sebagai string HTML
+// Untuk membuat semua kartu sekaligus sebagai string HTML
 let example_card = "";
 
 for (let x = 0; x < lagu.length; x++) {
@@ -46,7 +47,7 @@ for (let x = 0; x < lagu.length; x++) {
 }
     card.innerHTML = example_card;
 
-// Setelah elemen ada di DOM, pasang event listener
+// Memasang event listener
 for (let x = 0; x < lagu.length; x++) {
     const audio = document.getElementById(`audio-${x}`);
     const button = document.getElementById(`play-btn-${x}`);
@@ -54,7 +55,7 @@ for (let x = 0; x < lagu.length; x++) {
     updateSliderStyle(progress);
 
     button.addEventListener("click", () => {
-        // Jika audio lain sedang diputar, hentikan
+        // Jika audio lain sedang diputar, hentikan lalu mereset kemmbali ke 0 audio saat ini
         if (currentAudio && currentAudio !== audio) {
             currentAudio.pause();
             currentAudio.currentTime = 0;
